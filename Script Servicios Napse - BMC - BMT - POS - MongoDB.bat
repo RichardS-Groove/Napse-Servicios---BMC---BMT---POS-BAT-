@@ -134,12 +134,11 @@ goto:menu
         
     echo Detener Servicios POS
     echo.
-        net stop 
-        net stop 
-        net stop 
-        net stop 
-        net stop 
-        net stop 
+    SET /p t= ^> Ingrese en numero de Tienda: 
+    SET /p l= ^> Ingrese en numero de Terminal: 
+    echo.
+        net stop NapseBridgeApiTerminal_bridgeOffline
+        net stop Napse_BridgePosDirector_%t%_%l%
     pause
     goto:menu
 
@@ -151,13 +150,12 @@ goto:menu
         color 30
         
     echo Iniciar Servicios POS
+    echo.    
+    SET /p t= ^> Ingrese en numero de Tienda: 
+    SET /p l= ^> Ingrese en numero de Terminal: 
     echo.
-        net start 
-        net start 
-        net start 
-        net start 
-        net start 
-        net start 
+        net start NapseBridgeApiTerminal_bridgeOffline
+        net start Napse_BridgePosDirector_%t%_%l%
     pause
     goto:menu
 
