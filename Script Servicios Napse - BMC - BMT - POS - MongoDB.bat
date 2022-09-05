@@ -71,7 +71,6 @@ goto:menu
     pause
     goto:menu
 
-
 :op2
     echo.
     echo. Has elegido la opcion No. 2
@@ -89,7 +88,6 @@ goto:menu
         net start NapseBridgeManagerDirector_bridgeCentral
     pause
     goto:menu
-
 
 :op3
     echo.
@@ -109,7 +107,6 @@ goto:menu
     pause
     goto:menu
 
-
 :op4
     echo.
     echo. Has elegido la opcion No. 4
@@ -128,6 +125,41 @@ goto:menu
     pause
     goto:menu
 
+:op5
+    echo.
+    echo. Has elegido la opcion No. 5
+    echo.
+        ::Detener Servicios POS
+        color 30
+        
+    echo Detener Servicios POS
+    echo.
+        net stop 
+        net stop 
+        net stop 
+        net stop 
+        net stop 
+        net stop 
+    pause
+    goto:menu
+
+:op6
+    echo.
+    echo. Has elegido la opcion No. 5
+    echo.
+        ::Iniciar Servicios POS
+        color 30
+        
+    echo Iniciar Servicios POS
+    echo.
+        net start 
+        net start 
+        net start 
+        net start 
+        net start 
+        net start 
+    pause
+    goto:menu
 
 :op7
     echo.
@@ -142,7 +174,6 @@ goto:menu
     pause
     goto:menu
 
-
 :op8
     echo.
     echo. Has elegido la opcion No. 8
@@ -155,7 +186,6 @@ goto:menu
         net start MongoDB
     pause
     goto:menu
-
 
 :op9
     echo.
