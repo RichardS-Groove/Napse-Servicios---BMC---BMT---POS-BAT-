@@ -26,12 +26,13 @@ echo  7)   Detener Servicios MongoDB
 echo  8)   Iniciar Servicios MongoDB
 echo  9)   Detener/Eliminar - Servicios Central 
 echo 10)   Detener/Eliminar - Servicios Store
-echo 11)   Salir
+echo 11)   Abrir Servicios Windows
+echo 12)   Salir
 
 echo.
 echo.
 
-SET /p var= ^> Seleccione una opcion [1-11]: 
+SET /p var= ^> Seleccione una opcion [1-12]: 
 
 if "%var%"=="0" goto menu
 if "%var%"=="1" goto op1
@@ -44,6 +45,7 @@ if "%var%"=="7" goto op7
 if "%var%"=="8" goto op8
 if "%var%"=="9" goto op9
 if "%var%"=="10" goto op10
+if "%var%"=="11" goto op11
 if "%var%"=="3" goto salir
 
 ::Mensaje de error, validación cuando se selecciona una opción fuera de rango
@@ -238,6 +240,20 @@ goto:menu
         sc delete NapseBridgeManagerDirector_bridgeStore
     pause
     goto:menu
+
+:op11
+    echo.
+    echo. Has elegido la opcion No. 11
+    echo.
+        ::Abrir Servicios de Windows
+        color 30
+        
+    echo Iniciando Servicios de Windows
+    echo.
+        start services.msc
+    pause
+    goto:menu
+
 
 :salir
     @cls&exit
