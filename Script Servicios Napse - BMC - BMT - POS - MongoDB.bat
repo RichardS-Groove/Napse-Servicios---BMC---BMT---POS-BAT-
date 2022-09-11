@@ -26,13 +26,15 @@ echo  7)   Detener Servicios MongoDB
 echo  8)   Iniciar Servicios MongoDB
 echo  9)   Detener/Eliminar - Servicios Central 
 echo 10)   Detener/Eliminar - Servicios Store
-echo 11)   Abrir Servicios Windows
-echo 12)   Salir
+echo 11)   Detener/Eliminar - Servicios POS
+echo 12)   Abrir Servicios Windows
+echo 13)   IP VM
+echo 14)   Salir
 
 echo.
 echo.
 
-SET /p var= ^> Seleccione una opcion [1-12]: 
+SET /p var= ^> Seleccione una opcion [1-14]: 
 
 if "%var%"=="0" goto menu
 if "%var%"=="1" goto op1
@@ -46,7 +48,9 @@ if "%var%"=="8" goto op8
 if "%var%"=="9" goto op9
 if "%var%"=="10" goto op10
 if "%var%"=="11" goto op11
-if "%var%"=="3" goto salir
+if "%var%"=="12" goto op12
+if "%var%"=="13" goto op13
+if "%var%"=="14" goto salir
 
 ::Mensaje de error, validación cuando se selecciona una opción fuera de rango
 echo. El numero "%var%" no es una opcion valida, por favor intente de nuevo.
@@ -245,12 +249,50 @@ goto:menu
     echo.
     echo. Has elegido la opcion No. 11
     echo.
+        ::Detener/Eliminar - Servicios POS
+        color 30
+        
+    echo Deteniendo Servicios POS
+    echo.
+    SET /p t= ^> Ingrese en numero de Tienda: 
+    SET /p l= ^> Ingrese en numero de Terminal: 
+    echo.
+        net stop NapseBridgeApiTerminal_bridgeOffline
+        net stop Napse_BridgePosDirector_%t%_%l%
+        net stop EmuladorVtol
+
+    echo Comenzamos con eliminar los siguientes servicios:
+    echo.
+        sc delete NapseBridgeApiTerminal_bridgeOffline
+        sc delete Napse_BridgePosDirector_%t%_%l%
+        sc delete EmuladorVtol
+    pause
+    goto:menu
+
+
+:op12
+    echo.
+    echo. Has elegido la opcion No. 12
+    echo.
         ::Abrir Servicios de Windows
         color 30
         
     echo Iniciando Servicios de Windows
     echo.
         start services.msc
+    pause
+    goto:menu
+
+:op13
+    echo.
+    echo. Has elegido la opcion No. 11
+    echo.
+        ::IP VM
+        color 30
+        
+    echo IP VM
+    echo.
+        ipconfig
     pause
     goto:menu
 
