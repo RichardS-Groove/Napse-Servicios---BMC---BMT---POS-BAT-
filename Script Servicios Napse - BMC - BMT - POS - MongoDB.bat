@@ -140,28 +140,30 @@ goto:menu
         
     echo Detener Servicios POS
     echo.
-    SET /p t= ^> Ingrese en numero de Tienda: 
-    SET /p l= ^> Ingrese en numero de Terminal: 
+    SET /p t= ^> Ingrese el numero de Tienda: 
+    SET /p l= ^> Ingrese el numero de Terminal: 
     echo.
         net stop NapseBridgeApiTerminal_bridgeOffline
         net stop Napse_BridgePosDirector_%t%_%l%
+        net stop EmuladorVtol
     pause
     goto:menu
 
 :op6
     echo.
-    echo. Has elegido la opcion No. 5
+    echo. Has elegido la opcion No. 6
     echo.
         ::Iniciar Servicios POS
         color 30
         
     echo Iniciar Servicios POS
     echo.    
-    SET /p t= ^> Ingrese en numero de Tienda: 
-    SET /p l= ^> Ingrese en numero de Terminal: 
+    SET /p t= ^> Ingrese el numero de Tienda: 
+    SET /p l= ^> Ingrese el numero de Terminal: 
     echo.
         net start NapseBridgeApiTerminal_bridgeOffline
         net start Napse_BridgePosDirector_%t%_%l%
+        net start EmuladorVtol
     pause
     goto:menu
 
