@@ -294,7 +294,7 @@ goto:menu
         
     echo IP VM
     echo.
-        ipconfig
+        ipconfig/all
     pause
     goto:menu
 
