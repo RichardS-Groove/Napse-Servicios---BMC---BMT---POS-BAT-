@@ -29,12 +29,13 @@ echo 10)   Detener/Eliminar - Servicios Store
 echo 11)   Detener/Eliminar - Servicios POS
 echo 12)   Abrir Servicios Windows
 echo 13)   IP VM
-echo 14)   Salir
+echo 14)   Instalar BMC BMT
+echo 15)   Salir
 
 echo.
 echo.
 
-SET /p var= ^> Seleccione una opcion [1-14]: 
+SET /p var= ^> Seleccione una opcion [1-15]: 
 
 if "%var%"=="0" goto menu
 if "%var%"=="1" goto op1
@@ -50,7 +51,8 @@ if "%var%"=="10" goto op10
 if "%var%"=="11" goto op11
 if "%var%"=="12" goto op12
 if "%var%"=="13" goto op13
-if "%var%"=="14" goto salir
+if "%var%"=="14" goto op14
+if "%var%"=="15" goto salir
 
 ::Mensaje de error, validación cuando se selecciona una opción fuera de rango
 echo. El numero "%var%" no es una opcion valida, por favor intente de nuevo.
@@ -295,6 +297,23 @@ goto:menu
     echo IP VM
     echo.
         ipconfig/all
+    pause
+    goto:menu
+
+
+:op14
+    echo.
+    echo. Has elegido la opcion No. 14
+    echo.
+        ::Iniciar BM
+        color 30
+        
+    echo Instalar BMC BMT (USE TAB PARA AUTOCOMPLETAR EL INSTALADOR) 
+    echo.
+        cd ../../
+        dir
+        SET /p bm= ^> Ingrese el instalador BM: 
+        java -jar %bm%
     pause
     goto:menu
 
